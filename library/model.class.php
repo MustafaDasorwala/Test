@@ -1,29 +1,14 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of model
- *
- * @author Mustafa Dasorwala <mdasorwala@gwu.edu>
- */
 class Model extends SQLQuery {
+	protected $_model;
 
-    protected $_model;
+	function __construct() {
 
-    function __construct() {
+		$this->connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
+		$this->_model = get_class($this);
+		$this->_table = strtolower($this->_model)."s";
+	}
 
-        $this->connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-        $this->_model = get_class($this);
-        $this->_table = strtolower($this->_model) . "s";
-    }
-
-    function __destruct() {
-        
-    }
-
+	function __destruct() {
+	}
 }
